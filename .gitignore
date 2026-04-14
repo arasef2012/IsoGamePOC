@@ -1,0 +1,22 @@
+# Godot 4 .gitignore
+
+# Godot-specific ignores
+.godot/
+*.translation
+
+# Exported projects
+*.apk
+*.aab
+*.ipa
+*.exe
+*.x86_64
+*.arm64
+*.web.zip
+export_presets.cfg
+
+# Import cache
+.import/
+
+# OS-specific
+.DS_Store
+Thumbs.db

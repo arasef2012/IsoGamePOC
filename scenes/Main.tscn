@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://main001"]
+
+[ext_resource type="PackedScene" uid="uid://player001" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://hud001" path="res://scenes/HUD.tscn" id="2_hud"]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="3_main"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("3_main")
+
+[node name="WorldRoot" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="WorldRoot"]
+cell_size = Vector2(128, 64)
+
+[node name="Player" parent="WorldRoot" instance=ExtResource("1_player")]
+position = Vector2(640, 360)
+z_index = 1
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
