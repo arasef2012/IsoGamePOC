@@ -39,7 +39,7 @@ func _handle_movement() -> void:
 
 func _handle_shooting() -> void:
 	if shoot_joystick and shoot_joystick.is_active():
-		var shoot_dir := shoot_joystick.get_output()
+		var shoot_dir: Vector2 = shoot_joystick.get_output()
 		if shoot_dir.length() > 0.3:
 			_fire(shoot_dir)
 
