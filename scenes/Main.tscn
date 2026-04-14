@@ -9,8 +9,7 @@ script = ExtResource("3_main")
 
 [node name="WorldRoot" type="Node2D" parent="."]
 
-[node name="TileMap" type="TileMap" parent="WorldRoot"]
-cell_size = Vector2(128, 64)
+[node name="TileMapLayer" type="TileMapLayer" parent="WorldRoot"]
 
 [node name="Player" parent="WorldRoot" instance=ExtResource("1_player")]
 position = Vector2(640, 360)
