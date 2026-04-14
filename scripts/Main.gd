@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	var player: CharacterBody2D = $Player
+	var player: CharacterBody2D = $WorldRoot/Player
 	var hud: CanvasLayer = $HUD
 
 	# Wire joysticks to player.
