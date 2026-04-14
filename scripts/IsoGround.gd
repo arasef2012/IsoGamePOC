@@ -27,7 +27,7 @@ func _draw_tile(gx: int, gy: int) -> void:
 		Vector2(c.x,      c.y + hh),  # bottom
 		Vector2(c.x - hw, c.y),        # left
 	])
-	draw_colored_polygon(pts, PackedColorArray([tile_color]))
+	draw_colored_polygon(pts, tile_color)
 	draw_polyline(
 		PackedVector2Array([pts[0], pts[1], pts[2], pts[3], pts[0]]),
 		border_color, 1.0

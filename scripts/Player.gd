@@ -23,7 +23,7 @@ func _draw() -> void:
 		Vector2(-16, -12),
 	])
 	var fill := Color(0.2, 0.6, 1.0) if _facing_right else Color(0.2, 0.4, 0.9)
-	draw_colored_polygon(body, PackedColorArray([fill]))
+	draw_colored_polygon(body, fill)
 	draw_polyline(
 		PackedVector2Array([body[0], body[1], body[2], body[3], body[4], body[5], body[0]]),
 		Color.WHITE, 1.5
