@@ -1,8 +1,14 @@
 extends Control
-## Virtual joystick for touch input.
-## Add a ColorRect or TextureRect child named "Base" and another named "Knob".
+## Virtual joystick for touch input with keyboard fallback for PC testing.
+## Set the four action_* exports to route keyboard input through this joystick.
 
 @export var joystick_radius: float = 80.0
+
+## Input action names for keyboard fallback (leave empty to disable).
+@export var action_left: String = ""
+@export var action_right: String = ""
+@export var action_up: String = ""
+@export var action_down: String = ""
 
 var _touch_index: int = -1
 var _center: Vector2
@@ -49,11 +55,25 @@ func _release() -> void:
 	_knob.position = _center - _knob.size / 2.0
 
 
-## Returns a normalized Vector2 in range [-1, 1] on each axis.
+func _keyboard_output() -> Vector2:
+	if action_left == "" and action_right == "" and action_up == "" and action_down == "":
+		return Vector2.ZERO
+	return Vector2(
+		Input.get_axis(action_left, action_right),
+		Input.get_axis(action_up, action_down)
+	)
+
+
+## Returns a Vector2 in range [-1, 1] per axis.
+## Touch input takes priority; falls back to keyboard when no finger is active.
 func get_output() -> Vector2:
-	return _output
+	if _touch_index != -1:
+		return _output
+	return _keyboard_output()
 
 
-## True when the joystick is actively being held.
+## True when the joystick has active input from touch or keyboard.
 func is_active() -> bool:
-	return _touch_index != -1
+	if _touch_index != -1:
+		return true
+	return _keyboard_output().length() > 0.0
